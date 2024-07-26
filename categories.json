@@ -1,0 +1,127 @@
+[
+  {
+    "category_name": "Category First",
+    "ticket_types": [
+      {
+        "ticket_type_title": "Standard",
+        "ticket_type_detail": "\u20ac 70.00",
+        "availability": "Currently not available"
+      },
+      {
+        "ticket_type_title": "Accessible",
+        "ticket_type_detail": "\u20ac 70.00",
+        "availability": "Available"
+      },
+      {
+        "ticket_type_title": "Accessible companion",
+        "ticket_type_detail": "\u20ac 70.00",
+        "availability": "Currently not available"
+      },
+      {
+        "ticket_type_title": "Wheelchair",
+        "ticket_type_detail": "\u20ac 70.00",
+        "availability": "Available"
+      },
+      {
+        "ticket_type_title": "Wheelchair companion",
+        "ticket_type_detail": "\u20ac 70.00",
+        "availability": "Currently not available"
+      }
+    ]
+  },
+  {
+    "category_name": "Category A",
+    "ticket_types": [
+      {
+        "ticket_type_title": "Standard",
+        "ticket_type_detail": "\u20ac 50.00",
+        "availability": "Currently not available"
+      },
+      {
+        "ticket_type_title": "Accessible",
+        "ticket_type_detail": "\u20ac 50.00",
+        "availability": "Available"
+      },
+      {
+        "ticket_type_title": "Accessible companion",
+        "ticket_type_detail": "\u20ac 50.00",
+        "availability": "Currently not available"
+      }
+    ]
+  },
+  {
+    "category_name": "Category B",
+    "ticket_types": [
+      {
+        "ticket_type_title": "Standard",
+        "ticket_type_detail": "\u20ac 40.00",
+        "availability": "Available"
+      },
+      {
+        "ticket_type_title": "Accessible",
+        "ticket_type_detail": "\u20ac 40.00",
+        "availability": "Available"
+      },
+      {
+        "ticket_type_title": "Accessible companion",
+        "ticket_type_detail": "\u20ac 40.00",
+        "availability": "Currently not available"
+      }
+    ]
+  },
+  {
+    "category_name": "Category C",
+    "ticket_types": [
+      {
+        "ticket_type_title": "Standard",
+        "ticket_type_detail": "\u20ac 30.00",
+        "availability": "Available"
+      },
+      {
+        "ticket_type_title": "Wheelchair",
+        "ticket_type_detail": "\u20ac 30.00",
+        "availability": "Available"
+      },
+      {
+        "ticket_type_title": "Wheelchair companion",
+        "ticket_type_detail": "\u20ac 30.00",
+        "availability": "Currently not available"
+      }
+    ]
+  },
+  {
+    "category_name": "Category D",
+    "ticket_types": [
+      {
+        "ticket_type_title": "Standard",
+        "ticket_type_detail": "\u20ac 24.00",
+        "availability": "Available"
+      },
+      {
+        "ticket_type_title": "Accessible",
+        "ticket_type_detail": "\u20ac 24.00",
+        "availability": "Available"
+      },
+      {
+        "ticket_type_title": "Accessible companion",
+        "ticket_type_detail": "\u20ac 24.00",
+        "availability": "Currently not available"
+      },
+      {
+        "ticket_type_title": "Wheelchair",
+        "ticket_type_detail": "\u20ac 24.00",
+        "availability": "Currently not available"
+      }
+    ]
+  },
+  {
+    "category_name": "Special offer",
+    "ticket_types": [
+      {
+        "ticket_type_title": "Standard",
+        "ticket_type_detail": "\u20ac 15.00",
+        "availability": "Available"
+      }
+    ]
+  }
+]
