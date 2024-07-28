@@ -1,6 +1,5 @@
 import time
 import json
-
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -37,16 +36,16 @@ print("Page title:", title)
 #do not remove this sleep command. page maytake a few seconds to load records
 time.sleep(5)
 
-summary = []
-page = 1
+summary = [] #An empty list to store the scraped data.
+page = 1 #A counter to track the current page number.
 
-def scrape_page():
+def scrape_page(): #This function encapsulates the logic to scrape data from the current page.
 
-    try:
+    try: #Waits up to 5 seconds for all elements with tag name product-item to be present.
         all_items = WebDriverWait(driver, 5).until(
             EC.presence_of_all_elements_located((By.TAG_NAME, "product-item")))
 
-        for index in range(len(all_items)):
+        for index in range(len(all_items)): #Loops through each item, extracting headline, description, date/time/venue, and price.
             headline = all_items[index].find_element(By.ID, f"listing-headline-{index}").text
             description = all_items[index].find_element(By.CLASS_NAME, f"listing-description").text
             data_Time_venue = all_items[index].find_element(By.CLASS_NAME, f"listing-subheadline").text
@@ -61,9 +60,9 @@ def scrape_page():
             # print("Price:", price)
             print("total:",len(summary), "| index:",index, "| page:", page )
 
-            dtv = data_Time_venue.split("|")
+            dtv = data_Time_venue.split("|") #Spliting the data_Time_venue string
 
-            all_items[index].click()
+            all_items[index].click() #storing the extracted summary data in a dictionary.
             event = {
                     "index": len(summary),
                     "headline": headline,
@@ -76,18 +75,19 @@ def scrape_page():
                     "price": price,
                 }
             
-            try:
+            try: #Tries to find and click the close button of a pop-up.
                 close_button = WebDriverWait(driver, 5).until(
                 EC.presence_of_element_located((By.XPATH, "/html/body/serp-modal/div[2]/button")))
                 close_button.click()
 
-            except Exception as e:
+            except Exception as e: #If the close button is not found, calls extract_FullDetail() to get additional details and navigates back.
                 details = extract_FullDetail()
                 event["details"] = details
                 driver.back()
 
-            summary.append(event)
+            summary.append(event) # Appends the event to the summary list.
             
+            #Refreshing the all_items list to account for dynamic content changes.
             all_items = WebDriverWait(driver, 5).until(
             EC.presence_of_all_elements_located((By.TAG_NAME, "product-item")))
 
@@ -96,7 +96,7 @@ def scrape_page():
         print(e)
 
 
-def extract_FullDetail():
+def extract_FullDetail(): # Extracting additional details from the event details page.
     details = {}
     event = driver.find_element(By.CLASS_NAME, "p-stage-headline").text
     sessionInfo = driver.find_element(By.ID, "eventDescription").find_element(By.TAG_NAME, "p").text
@@ -105,6 +105,7 @@ def extract_FullDetail():
     ticketInfo = driver.find_element(By.CLASS_NAME, "js-p24-ctt-description-box").text
     categories = driver.find_element(By.ID, "tickets").find_elements(By.CLASS_NAME, "p-card")
 
+    #Storing the extracted details in the details dictionary.
     details["event"] = event
     details["ticket_session_info"] = sessionInfo
     details["date"] = dateTime.split("|")[0].strip()
@@ -114,7 +115,7 @@ def extract_FullDetail():
     details["city"] = venue.split("|")[1].strip()
     details["ticket_selection_info"] = ticketInfo
 
-    categories_list = []
+    categories_list = [] # Iterates through categories and ticket types, storing their details.
     for category in categories:
         category_form = category.find_element(By.TAG_NAME, "form")
         category_head = category_form.find_element(By.CLASS_NAME, "event-list-head").text
@@ -169,7 +170,7 @@ def extract_FullDetail():
     
 # detail_click = driver.find_element(By.CLASS_NAME, "p-btn")
 # detail_click.click()
-while True:
+while True: #an infinite loop to continuously scrape pages
     scrape_page()
 
     try:
